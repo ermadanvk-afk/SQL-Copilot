@@ -7,3 +7,4 @@ google-genai
 rank_bm25
 sqlfluff
 pyodbc
+protobuf<5.0.0
