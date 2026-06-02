@@ -1,0 +1,9 @@
+streamlit
+pandas
+openpyxl
+chromadb
+python-dotenv
+google-genai
+rank_bm25
+sqlfluff
+pyodbc

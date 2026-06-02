@@ -1,0 +1,16 @@
+Transaction tables store numeric foreign keys.
+For human readable reports you must resolve these keys using master tables.
+
+Use the following mappings:
+
+ItemNo → join [masterdata].[mItemMaster] → use ItemDescription
+VendorNo → join [masterdata].[mVendorCard] → use Name
+VendorLocationNo → join [masterdata].[mVendorLocationDetail] → use FullAddress
+UnitNo → join [masterdata].[mUnitMaster] → use UnitName
+MakeNo → join [masterdata].[mMakeMaster] → use MakeName
+CostCenterNo → join [masterdata].[mCostCenterMaster] → use CostCenterName
+DeptNo → join [payroll].[tblDeptMaster] → use DeptName
+
+Important:
+When a query asks for items, vendors, units, make, department, cost center etc,
+NEVER return the numeric key. Always join the master table and return the name column.
