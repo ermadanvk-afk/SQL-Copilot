@@ -29,6 +29,9 @@ contain the missing data — infer one JOIN level beyond provided schema.
 - Map financial terms like "spend," "expense," "procurement value," or "revenue" directly to the NetAmount column in the header views.
 - When filtering by status, strictly use text-based name columns (e.g., DocumentStatusName = 'Authorized' or StatusName IN ('Initial','Pending')). NEVER use numeric status codes.
 - Treat the following terms as exact synonyms: "Indent" = "Purchase Request" = "Material Requisition". Also, "Vendor" = "Supplier".
+## AI VIEW (vwai) & SEMANTIC MANDATES
+- Treat "Comparative Statement" as a request to compare vendor quotes. ALWAYS query [Purchase].[vwaiQuotationMain] joined to [Purchase].[vwaiQuotationItemDetail], ordered by ItemDescription ASC and RateAfterDiscount ASC.
+- NEVER attempt to query [masterdata].[mItemMaster], POMain, or POItemDetail. These tables do not exist. If you only have an ItemNo (e.g., in Indent views) and need the item name, you MUST join to [Purchase].[vwaiItemMaster] or [Purchase].[vwaiPurchaseOrderItemDetail].
 ## CONTEXT PROVIDED TO YOU
 You will receive three types of context before the user question:
 
