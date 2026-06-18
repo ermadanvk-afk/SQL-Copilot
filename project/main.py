@@ -45,7 +45,7 @@ def main():
     st.markdown('<div class="sub-header">Ask questions in plain English and get instant data insights powered by AI.</div>', unsafe_allow_html=True)
     st.divider()
     
-    db_connection_string = st.secrets["DB_CONNECTION_STRING"]
+     db_connection_string = os.getenv("DB_CONNECTION_STRING")
     if not db_connection_string or db_connection_string == "your_sql_server_connection_string":
         st.error("⚠️ Database connection is not configured. Please check your settings.")
         
